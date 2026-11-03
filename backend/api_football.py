@@ -1,5 +1,6 @@
 
 import os
+import json
 import requests
 from datetime import date
 
@@ -45,3 +46,10 @@ if __name__ == "__main__":
         away = match["teams"]["away"]["name"]
 
         print(f"{home} - {away}")
+
+    os.makedirs("data", exist_ok=True)
+
+    with open("data/partite.json", "w", encoding="utf-8") as file:
+        json.dump(fixtures, file, ensure_ascii=False, indent=2)
+
+    print("Partite salvate in data/partite.json")
